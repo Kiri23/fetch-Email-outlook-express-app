@@ -41,7 +41,7 @@ This is the manifest
 "accessTokenAcceptedVersion": 2,
 "addIns": [],
 "allowPublicClient": null,
-"appId": "0db0980c-e7f4-479e-b60e-02b1c972a190",
+"appId": "id here",
 "appRoles": [],
 "oauth2AllowUrlPathMatching": false,
 "createdDateTime": "2023-10-22T07:57:06Z",
@@ -95,7 +95,7 @@ This is the manifest
 }
 ],
 "preAuthorizedApplications": [],
-"publisherDomain": "christiannogueras94hotmail.onmicrosoft.com",
+"publisherDomain": "remove for privacy",
 "replyUrlsWithType": [
 {
 "url": "http://localhost:3000/auth/callback",
