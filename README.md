@@ -37,6 +37,7 @@ i hope this help the future me if i ever need to do this again.
 
 I manage to have a way to know how thing work by using the raw http endpoint because node an python was getting stuck to much on the method call (request call)
 ref postman: https://web.postman.co/workspace/Tes~01daf001-378b-4356-91a8-63e64b2ed5a0/request/740324-34a7cc23-1048-44d1-9ea7-ba9dca2ef668
+
 This is the manifest
 {
 "id": "67fe50c4-20d9-4612-8bc8-857d2dc530e4",
@@ -161,6 +162,7 @@ This is the manifest
 
 
 these where the curl request I made using CURL to get the authorization code, then the token and then to get the messages
+
 First step get the auth code 
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=0db0980c-e7f4-479e-b60e-02b1c972a190&response_type=code&redirect_uri=http://localhost/myapp/&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 
