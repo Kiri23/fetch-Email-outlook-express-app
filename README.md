@@ -12,7 +12,7 @@ languages:
 christian comment
 This work. The way I made it to work was to used IPV4 with family 4 that force the client to use IPV4.
 This will sign in the user and get the token.
-then you can click (if everything went ok which I spent a week trying to figure out. ) on the messages nav item and it should show you the subject on a table.
+then you can click (if everything went ok which I spent a weekend trying to figure out. ) on the messages nav item and it should show you the subject on a table.
 Please note this was dificult to set up so probably something can break on the way
 I register an application on azure directory, I add myself as a owner in the owner tab on the right side of the screen.
 I add the redirect url to http://localhost:3000/auth/callback
