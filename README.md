@@ -164,7 +164,7 @@ This is the manifest
 these where the curl request I made using CURL to get the authorization code, then the token and then to get the messages
 
 First step get the auth code 
-https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=0db0980c-e7f4-479e-b60e-02b1c972a190&response_type=code&redirect_uri=http://localhost/myapp/&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=<client_id>&response_type=code&redirect_uri=http://localhost/myapp/&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 
 2. Exchange a token with the auth code 
 
