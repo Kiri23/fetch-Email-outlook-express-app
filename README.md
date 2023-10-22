@@ -10,9 +10,11 @@ languages:
 ---
 
 christian comment
-This work. The way I made it to work was to used IPV4 with family 4 that force the client to use IPV4.
-This will sign in the user and get the token.
-then you can click (if everything went ok which I spent a weekend trying to figure out. ) on the messages nav item and it should show you the subject on a table.
+This work. The way I made it to work was to used IPV4 with family 4 that force the client to use IPV4 and use the latest version of node (v21 or 20) because fetch was not experimental and graph client use fetch to make request.
+I also use the raw http endpoint to see how the request was made and how the flow should be. The I use chat gpt to guide me to translate the curl command to graph client and msal. Msal is for getting the token.
+
+
+Use Npm start and click on sign in. Should promp you to sign in. and the redirect you to home. In the backedn after sign in, the callback will be called with the authorization code to get the token. If everything went ok which I spend a weekend trying to figure out. You should be able to click on the messages nav item and it should show you the subject on a table.
 Please note this was dificult to set up so probably something can break on the way
 I register an application on azure directory, I add myself as a owner in the owner tab on the right side of the screen.
 I add the redirect url to http://localhost:3000/auth/callback
@@ -156,6 +158,28 @@ This is the manifest
 "tags": [],
 "tokenEncryptionKeyId": null
 }
+
+
+these where the curl request I made using CURL to get the authorization code, then the token and then to get the messages
+First step get the auth code 
+https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=0db0980c-e7f4-479e-b60e-02b1c972a190&response_type=code&redirect_uri=http://localhost/myapp/&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+
+2. Exchange a token with the auth code 
+
+curl --location 'https://login.microsoftonline.com/common/oauth2/v2.0/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'client_id=<client’_id> \
+--data-urlencode 'scope=Mail.Read' \
+--data-urlencode 'redirect_uri=http://localhost/myapp/' \
+--data-urlencode 'grant_type=authorization_code' \
+--data-urlencode 'client_secret=<client_secret> \
+--data-urlencode 'code=example->M.C107_BAY.2.614fd671-d332-ea7c-20e4-9dc3ef4d9b77'
+
+3. Use the ms graph api 
+curl -X GET "https://graph.microsoft.com/v1.0/me/mailFolders/inbox/messages?$top=25&$orderby=receivedDateTime%20DESC&$select=from,isRead,receivedDateTime,subject" \
+-H "Authorization: Bearer example token -> EwBgA8l6BAAUAOyDv0l6PcCVu89kmzvqZmkWABkAAeRh5V6J73vnqYKBtIGZIK7kmbZCY6j9zeSpmqAwlUfYTYiCCruxVgRnus1rk28dyKKbce3jQFknJK5rMZe6Sm/L5Bq38SaYngtU5M+1W514hmMF2qsaDLddPa+Ty5FWF/Q4IIoqQPVCLmVMiQztfGYk58bDat1y3o1DnL83UcZptAmaXog3yTWd+YW8/AQCliWEAkxoBzRQgVAJ0u/HRix38u74D8ZuGebXKWVLA+c……….”tried for security \
+-H "Content-Type: application/json"
+
 
 # Microsoft Graph sample Node.js Express app
 
