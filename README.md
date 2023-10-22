@@ -20,19 +20,20 @@ I add the client id and secret to the .env file
 the secret was generated om certificate and request. The secret is the one that said value and not the one that said id.
 the supported account type is any organization and personal microsoft accounts.(siginAudience: AzureADandPersonalMicrosoftAccount)
 
-The permision need to be delegated because application permisions are not supported for personal accounts. but applications permsisons do not require a sign in.
+The permision need to be of type delegated because application permisions are not supported for personal accounts. but applications permsisons do not require a sign in.
 delegate permisions require a sign in. and you act as a behalf of the user
 
-for the permisions you need to grant admin consent.
+for the permisions you need to grant admin consent. click a button that say grant admin consent for <directorio>
 the permisions to read emails are mail.read and mail.readbasic
 but user.read is also needed to get the user id.
 
 Allow public client flows is set to no
 
-that should be all i learn during this week. the most difficult thing was to get the token and then use the graph client to get the messages. I use the authorization code flow. The code should give you a redirect url for you to sign , after sign it will redirect you to the redirect url. the redirect url will have a code that you can use to get the token. the token is then passed to every call for the graph client. That flow was completed complicated to accomplish because you have multiple ways of authentication and then one i need required user log in because im using outlook personal account and want to read my personal emails.
+that should be all i learn during this week. the most difficult thing was to get the token and then use the graph client to get the messages. I use the authorization code flow. The code you implement should give you a redirect url for you to sign , after sign it will redirect you to the redirect url. the redirect url will have a code on the query param. The authorization code is used to get a token. the token is then passed to every call for the graph client. That flow was complicated to accomplish because you have multiple ways of authentication and then one i need required user log in because im using outlook personal account and want to read my personal emails.
 
 i hope this help the future me if i ever need to do this again.
 
+I manage to have a way to know how thing work by using the raw http endpoint because node an python was getting stuck to much on the method call (request call)
 ref postman: https://web.postman.co/workspace/Tes~01daf001-378b-4356-91a8-63e64b2ed5a0/request/740324-34a7cc23-1048-44d1-9ea7-ba9dca2ef668
 This is the manifest
 {
